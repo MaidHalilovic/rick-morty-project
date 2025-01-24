@@ -3,6 +3,13 @@ import "./homePage.css";
 import axios from "axios";
 import img1 from "../../images/PngItem_438051 1.png";
 import Options from "../../components/options/Options";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { Repeat } from "@mui/icons-material";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -46,8 +53,42 @@ const App = () => {
       <div className='character-container'>
         {characters.map((el, index) => (
           <div className='cards' key={index}>
-            <h1>{el.name}</h1>
-            <p>{el.species}</p>
+            <Card
+              sx={{
+                maxWidth: 200,
+              }}
+            >
+              <CardMedia
+                sx={{
+                  height: 200,
+                  width: 200,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                image={el.image}
+                title={el.name}
+              />
+              <CardContent>
+                <Typography variant='h5' gutterBottom>
+                  {el.name}
+                </Typography>
+                <Typography
+                  variant='body2'
+                  color='text.secondary'
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    textAlign: "center",
+                    gap: 20,
+                  }}
+                >
+                  {el.species}
+                  {el.status}
+                  {el.origin.name}
+                </Typography>
+              </CardContent>
+            </Card>
           </div>
         ))}
         <button onClick={handleLoadMore}>Load More</button>
