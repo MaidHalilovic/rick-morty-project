@@ -1,8 +1,8 @@
 import React from "react";
 import "./characters.css";
 
-function characters() {
+function Characters() {
   return <div>characters</div>;
 }
 
-export default characters;
+export default Characters;

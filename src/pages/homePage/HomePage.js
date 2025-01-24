@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import "./homePage.css";
 import axios from "axios";
+import img1 from "../../images/PngItem_438051 1.png";
+import Options from "../../components/options/Options";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -9,12 +12,14 @@ const App = () => {
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
-        const response = await axios.get(
+        const data = await axios.get(
           `https://rickandmortyapi.com/api/character?page=${page}`
         );
+        console.log(data.data);
+
         setCharacters((prevCharacters) => [
           ...prevCharacters,
-          ...response.data.results,
+          ...data.data.results,
         ]);
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -32,11 +37,17 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='main-Container'>
+      <div className='img'>
+        <img src={img1} alt='img' />
+      </div>
+      <Options />
+
       <div className='character-container'>
         {characters.map((el, index) => (
           <div className='cards' key={index}>
             <h1>{el.name}</h1>
+            <p>{el.species}</p>
           </div>
         ))}
         <button onClick={handleLoadMore}>Load More</button>

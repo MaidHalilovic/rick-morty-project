@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Concert+One&display=swap");
+
+.concert-one-regular {
+  font-family: "Concert One", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  justify-content: center;
+  gap: 600px;
+  border-bottom: solid 2px black;
+  height: 80px;
+}
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  color: gray;
+  transition: color 0.3s ease;
+}
