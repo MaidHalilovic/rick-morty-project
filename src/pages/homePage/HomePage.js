@@ -10,6 +10,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Repeat } from "@mui/icons-material";
+import { IoPlanetOutline } from "react-icons/io5";
+import { PiAlien } from "react-icons/pi";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
@@ -24,10 +26,7 @@ const App = () => {
         );
         console.log(data.data);
 
-        setCharacters((prevCharacters) => [
-          ...prevCharacters,
-          ...data.data.results,
-        ]);
+        setCharacters(() => [...data.data.results]);
       } catch (error) {
         console.error("Error fetching data: ", error);
       } finally {
@@ -73,18 +72,13 @@ const App = () => {
                 <Typography variant='h5' gutterBottom>
                   {el.name}
                 </Typography>
-                <Typography
-                  variant='body2'
-                  color='text.secondary'
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    textAlign: "center",
-                    gap: 20,
-                  }}
-                >
+                <Typography variant='body2' color='text.secondary'>
+                  <PiAlien />
                   {el.species}
+                  <br />
                   {el.status}
+                  <br />
+                  <IoPlanetOutline />
                   {el.origin.name}
                 </Typography>
               </CardContent>
