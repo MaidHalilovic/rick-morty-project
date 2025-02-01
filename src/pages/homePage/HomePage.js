@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, use } from "react";
 import "./homePage.css";
 import axios from "axios";
 import img1 from "../../images/PngItem_438051 1.png";
@@ -12,11 +12,15 @@ import Typography from "@mui/material/Typography";
 import { Repeat } from "@mui/icons-material";
 import { IoPlanetOutline } from "react-icons/io5";
 import { PiAlien } from "react-icons/pi";
+import Pagination from "@mui/material/Pagination";
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalCards, setTotalCards] = useState(826);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage, setCardsPerPage] = useState(20);
 
   useEffect(() => {
     const fetchCharacters = async () => {
@@ -35,11 +39,11 @@ const App = () => {
     };
 
     fetchCharacters();
-  }, [page]);
+  }, [currentPage]);
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
-    setLoading(true);
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+    setPage(value);
   };
 
   return (
@@ -85,7 +89,12 @@ const App = () => {
             </Card>
           </div>
         ))}
-        <button onClick={handleLoadMore}>Load More</button>
+
+        <Pagination
+          count={Math.ceil(totalCards / cardsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   );
