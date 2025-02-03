@@ -19,6 +19,7 @@ function Header() {
         <h1 onClick={() => navigate("/Characters")}>Characters</h1>
         <h1 onClick={() => navigate("/Episodes")}>Episodes</h1>
         <h1 onClick={() => navigate("/Locations")}>Locations</h1>
+        <h1 onClick={() => navigate("/Contact Us")}>Contact Us</h1>
       </div>
     </div>
   );

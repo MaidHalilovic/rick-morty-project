@@ -1,0 +1,21 @@
+.footer {
+  gap: 20px;
+  background-color: rgb(185, 183, 183);
+  user-select: none;
+  height: 140px;
+}
+.footer h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+a {
+  color: black;
+}
