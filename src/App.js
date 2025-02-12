@@ -19,7 +19,7 @@ function App() {
           <Route path='/Characters' element={<Characters />} />
           <Route path='/Episodes' element={<Episodes />} />
           <Route path='/Locations' element={<Location />} />
-          <Route path='Contact Us' element={<ContactUs />} />
+          <Route path='/Contact Us' element={<ContactUs />} />
         </Routes>
         <Footer />
       </BrowserRouter>
