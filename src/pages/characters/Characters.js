@@ -33,6 +33,7 @@ function Characters() {
           <div className='cards' key={index}>
             <h1>img: {el.name}</h1>
             <img src={el.image} alt='img' />
+            <h1>{el.species}</h1>
           </div>
         ))}
       </div>
