@@ -11,7 +11,7 @@ function Characters() {
       const { data } = await axios.get(
         "https://rickandmortyapi.com/api/character"
       );
-      console.log(data.results);
+     
 
       setCharacters(characters);
     } catch (error) {
