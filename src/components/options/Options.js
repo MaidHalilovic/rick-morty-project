@@ -129,7 +129,7 @@ export default function DynamicSelect() {
                 {el.name}
               </Typography>
               <Typography variant='body2' color='text.secondary'>
-                <PiAlien /> {el.species}
+                {el.species}
                 <br />
                 {el.status}
                 <br />

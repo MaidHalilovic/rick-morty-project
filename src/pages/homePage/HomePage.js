@@ -94,7 +94,13 @@ const App = () => {
           count={Math.ceil(totalCards / cardsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
-          style={{ marginBottom: 100, position: "relative", top: 30 }}
+          style={{
+            marginBottom: 100,
+            position: "relative",
+            top: 30,
+            display: "flex",
+            justifyContent: "center",
+          }}
         />
       </div>
     </div>
