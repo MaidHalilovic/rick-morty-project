@@ -22,7 +22,7 @@ export default function DynamicSelect() {
   const [statuses, setStatuses] = React.useState([]);
   const [search, setSearch] = React.useState("");
   const [allCharacters, setAllCharacters] = React.useState([]);
-  const [filteredCharacters, setFilteredCharacters] = React.useState([]);
+  // const [filteredCharacters, setFilteredCharacters] = React.useState([]);
   const [debouncedSearch] = useDebounce(search, 500);
   const [page, setPage] = React.useState(1);
   const [characters, setCharacters] = React.useState([]);
@@ -42,12 +42,13 @@ export default function DynamicSelect() {
       );
   }, []);
 
-  React.useEffect(() => {
-    const results = characters.filter((char) =>
-      char.name.toLowerCase().includes(search.toLowerCase())
-    );
-    setFilteredCharacters(results);
-  }, [search, characters]);
+  const filteredCharacters = characters.filter((character) =>
+    character.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleSelect = (character) => {
+    setSearch(character.name);
+  };
 
   const handlePageChange = (event, value) => {
     setPage(value);
@@ -70,6 +71,16 @@ export default function DynamicSelect() {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
+      {
+        <ul className='list'>
+          {search.length > 0 &&
+            filteredCharacters.map((character) => (
+              <li key={character.name} onClick={() => handleSelect(character)}>
+                {character.name}
+              </li>
+            ))}
+        </ul>
+      }
 
       <FormControl style={{ width: 150 }}>
         <InputLabel id='demo-simple-select-label'>Species</InputLabel>
